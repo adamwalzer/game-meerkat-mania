@@ -1,0 +1,13 @@
+@import '../../variables';
+
+#video,
+#video-2 {
+    .frame {
+        background-image: url('#{$frame}fr-9.png');
+        background-size: 100% 100%;
+
+        video {
+            margin: 40px 50px 40px 45px;
+        }
+    }
+}
