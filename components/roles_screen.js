@@ -1,13 +1,12 @@
-import MediaCollection from 'shared/components/media_collection/0.1';
-import RevealPrompt from 'shared/components/reveal_prompt/0.1';
-import SelectableCanvas from 'shared/components/selectable_canvas/0.1';
+import SelectableCanvas from 'shared/components/selectable_canvas/0.2';
 
 export default function (props, ref, key) {
     var closeReveal = function () {
-        skoash.trigger('updateState', {
-            path: 'reveal',
+        skoash.trigger('updateScreenData', {
+            key: 'reveal',
             data: {
-                open: ''
+                close: true,
+                open: false,
             }
         });
     };
@@ -21,11 +20,11 @@ export default function (props, ref, key) {
         >
             <skoash.Audio ref="intro" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-3-1.mp3`} />
 
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={function () {
-                    this.updateGameState({
-                        path: 'reveal',
+                    this.updateScreenData({
+                        key: 'reveal',
                         data: {
                             open: null
                         }
@@ -38,11 +37,12 @@ export default function (props, ref, key) {
                 <skoash.Audio ref="gatherer" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-3-5.mp3`} />
                 <skoash.Audio ref="alpha-male" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-3-6.mp3`} />
                 <skoash.Audio ref="alpha-female" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-3-7.mp3`} />
-            </MediaCollection>
+            </skoash.MediaCollection>
 
-            <RevealPrompt
+            <skoash.Reveal
                 ref="reveal"
                 openOnStart="intro"
+                closeReveal={_.get(props, 'data.reveal.close', null)}
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 list={[
                     <skoash.Component data-ref="intro">
@@ -64,6 +64,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
+                                crossOrigin="Anonymous"
                                 src={`${CMWN.MEDIA.IMAGE}img-3-2.png`}
                             />
                             <span>
@@ -83,6 +84,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
+                                crossOrigin="Anonymous"
                                 src={`${CMWN.MEDIA.IMAGE}img-3-4.png`}
                             />
                             <span>
@@ -103,6 +105,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
+                                crossOrigin="Anonymous"
                                 src={`${CMWN.MEDIA.IMAGE}img-3-6.png`}
                             />
                             <span>
@@ -123,6 +126,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
+                                crossOrigin="Anonymous"
                                 src={`${CMWN.MEDIA.IMAGE}img-3-8.png`}
                             />
                             <span>
@@ -145,6 +149,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
+                                crossOrigin="Anonymous"
                                 src={`${CMWN.MEDIA.IMAGE}img-3-10.png`}
                             />
                             <span>
@@ -165,6 +170,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
+                                crossOrigin="Anonymous"
                                 src={`${CMWN.MEDIA.IMAGE}img-3-12.png`}
                             />
                             <span>
@@ -193,6 +199,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="sentry" data-ref="sentry" message="sentry">
                         <skoash.Image
                             ref="img"
+                            crossOrigin="Anonymous"
                             data-ref="sentry"
                             message="sentry"
                             src={`${CMWN.MEDIA.IMAGE}img-3-1.png`}
@@ -201,6 +208,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="pup" data-ref="pup" message="pup">
                         <skoash.Image
                             ref="img"
+                            crossOrigin="Anonymous"
                             data-ref="pup"
                             message="pup"
                             src={`${CMWN.MEDIA.IMAGE}img-3-3.png`}
@@ -209,6 +217,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="babysitter" data-ref="babysitter" message="babysitter">
                         <skoash.Image
                             ref="img"
+                            crossOrigin="Anonymous"
                             data-ref="babysitter"
                             message="babysitter"
                             src={`${CMWN.MEDIA.IMAGE}img-3-5.png`}
@@ -217,6 +226,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="gatherer" data-ref="gatherer" message="gatherer">
                         <skoash.Image
                             ref="img"
+                            crossOrigin="Anonymous"
                             data-ref="gatherer"
                             message="gatherer"
                             src={`${CMWN.MEDIA.IMAGE}img-3-7.png`}
@@ -225,6 +235,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="alpha-male" data-ref="alpha-male" message="alpha-male">
                         <skoash.Image
                             ref="img"
+                            crossOrigin="Anonymous"
                             data-ref="alpha-male"
                             message="alpha-male"
                             src={`${CMWN.MEDIA.IMAGE}img-3-9.png`}
@@ -233,6 +244,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="alpha-female" data-ref="alpha-female" message="alpha-female">
                         <skoash.Image
                             ref="img"
+                            crossOrigin="Anonymous"
                             data-ref="alpha-female"
                             message="alpha-female"
                             src={`${CMWN.MEDIA.IMAGE}img-3-11.png`}
