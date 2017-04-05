@@ -1,4 +1,4 @@
-const src = 'https://res.cloudinary.com/changemyworldnow/video/upload/v1455033910/MeerkatMove_ovuzka.mp4';
+const src = `${CMWN.MEDIA.VIDEO}meerkat-move.mp4`;
 
 export default function (props, ref, key) {
     return (
